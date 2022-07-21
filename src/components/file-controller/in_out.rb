@@ -6,7 +6,7 @@ module Components
 
       if File.exist? path
         File.open path do |f|
-          data = f.read
+          data = f.readlines
         end
       end
 
