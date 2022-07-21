@@ -5,10 +5,8 @@ module Components
     def initialize
       super
 
-                      # e.g. <p> or blank or blank with '='
-      @row_regex    = /<.*>|^\s*$|^\s*=/
-                      # e.g blank with '=' or >=notice<
-      @return_regex = /^\s*=|>=[^<>]*</
+      @row_regex    = /<.*>|^\s*$|^\s*=/  # e.g. <p> or blank or blank with '='
+      @return_regex = /^\s*=|>=[^<>]*</   # e.g blank with '=' or >=notice<
 
       @rows    = Array.new
       @returns = Array.new
@@ -23,7 +21,11 @@ module Components
         is_row    = row.index(@row_regex)    == nil
         is_return = row.index(@return_regex) != nil
         
-        
+        if is_row
+          
+        elsif is_return
+          
+        end
       end
     end
   end
