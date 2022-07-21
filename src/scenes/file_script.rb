@@ -3,6 +3,8 @@ require_relative "../components/file-script/index"
 module Scenes
   class FileScript < FV::Scene
     attr_accessor :path, :name, :data
+    ANALYZE_ALL   = "aa"
+    TRAMSFORM_ALL = "ta"
 
     def initialize
       super
@@ -12,11 +14,9 @@ module Scenes
 
     def ready
       add(@codes, "FS_C")
-      analyze_all()
-    end
 
-    def analyze_all
-      @codes.analyze
+      emit_signal({ type: ANALYZE_ALL })
+      emit_signal({ type: TRAMSFORM_ALL })
     end
   end
 end
