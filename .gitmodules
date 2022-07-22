@@ -1,6 +1,6 @@
 [submodule "lib/option-parser"]
 	path = lib/option-parser
-	url = https://github.com/filipvrba/option-parser.git
+	url = git@github.com:filipvrba/option-parser.git
 [submodule "lib/fv"]
 	path = lib/fv
-	url = https://github.com/filipvrba/fv.git
+	url = git@github.com:filipvrba/fv.git
