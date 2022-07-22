@@ -40,7 +40,7 @@ OptionParser.parse do |parser|
       @options[:is_dev] = 0
     end
   end
-  parser.on( "-s DIR", "--save DIR", "Save convert a file to folder." ) do |dir|
+  parser.on( "-s DIR", "--save DIR", "Save a convert file to directory." ) do |dir|
     @options[:save][:dir] = File.realdirpath( dir, Dir.pwd() )
   end
 end

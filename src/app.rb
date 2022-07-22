@@ -3,8 +3,14 @@ require absolute_path("../../lib/index")
 require_relative "scenes/file_controller"
 require_relative "arguments"
 require_relative "constants"
+require_relative "signals"
 
 root = FV::Scene.new
+
+sig_int do
+  root.free
+  exit
+end
 
 file_controller = Scenes::FileController.new
 file_controller.save_to_dir = @options[:save][:dir]
@@ -22,5 +28,3 @@ root.add(file_controller, "FC")
 file_controller.add_file_script Data::get_file
 
 root.free
-
-# TODO: Add signal for exiting app
