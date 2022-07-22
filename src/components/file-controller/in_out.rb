@@ -1,3 +1,5 @@
+require "fileutils"
+
 module Components
   class InOut < FV::BasicObject
 
@@ -19,10 +21,18 @@ module Components
     end
 
     def create_file id
-      file_script = @parent.find_children(id)
-      file = File.new(get_relative_path(file_script), "w+")
+      file_script   = @parent.find_children(id)
+      relative_path = get_relative_path(file_script)
+      if @parent.save_to_dir
+        relative_path = "#{@parent.save_to_dir}/#{relative_path}"
+        FileUtils.mkdir_p( File.dirname(relative_path) )
+      end
+
+      file = File.new(relative_path, "w+")
       file.write file_script.data.join
       file.close
+
+      return File.basename(relative_path)
     end
   end
 end
