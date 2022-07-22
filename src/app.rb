@@ -9,3 +9,5 @@ file_controller = Scenes::FileController.new
 
 root.add(file_controller, "FC")
 file_controller.add_file_script Data::get_file
+
+root.free

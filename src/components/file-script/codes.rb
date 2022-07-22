@@ -6,7 +6,7 @@ module Components
 
     def initialize
       super
-
+      
       @@analyze_all_listener   = -> (signal) { @analyzer.analyze         }
       @@transform_all_listener = -> (signal) { @transformation.transform }
 
@@ -26,8 +26,11 @@ module Components
     end
 
     def free
-      disconnect(Scenes::FileScript::ANALYZE_ALL,   @@analyze_all_listener  )
-      disconnect(Scenes::FileScript::TRAMSFORM_ALL, @@transform_all_listener)
+      @rows           = nil
+      @returns        = nil
+
+      @analyzer       = nil
+      @transformation = nil
       super
     end
   end

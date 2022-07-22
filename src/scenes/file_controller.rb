@@ -6,7 +6,7 @@ module Scenes
     def initialize
       super
 
-      @@ready_done_listener = -> (signal) { script_ready_done(signal[:id]) }
+      @@ready_done_listener = lambda { |signal| script_ready_done(signal[:id]) }
 
       @in_out = Components::InOut.new
     end
@@ -18,11 +18,11 @@ module Scenes
     end
 
     def script_ready_done(id)
-      
+      @in_out.create_file id
     end
 
     def free
-      disconnect(Scenes::FileScript::READY_DONE, @@ready_done_listener)
+      @in_out = nil
       super
     end
 

@@ -21,5 +21,10 @@ module Scenes
 
       get_scene.emit_signal({ type: READY_DONE, id: id })
     end
+
+    def free
+      @codes = nil
+      super
+    end
   end
 end

@@ -12,3 +12,7 @@ SPECIAL_SYMBOLS_ERB = {
     r: S_ERB[:r]
   }
 }
+FILE_TYPES = {
+  via: "via",
+  erb: "erb"
+}
