@@ -6,11 +6,24 @@ module Scenes
     def initialize
       super
 
+      @@ready_done_listener = -> (signal) { script_ready_done(signal[:id]) }
+
       @in_out = Components::InOut.new
     end
 
     def ready
+      connect(Scenes::FileScript::READY_DONE, @@ready_done_listener)
+
       add(@in_out, "IO")
+    end
+
+    def script_ready_done(id)
+      
+    end
+
+    def free
+      disconnect(Scenes::FileScript::READY_DONE, @@ready_done_listener)
+      super
     end
 
     def add_file_script path

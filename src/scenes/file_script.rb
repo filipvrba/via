@@ -5,6 +5,7 @@ module Scenes
     attr_accessor :path, :name, :data
     ANALYZE_ALL   = "aa"
     TRAMSFORM_ALL = "ta"
+    READY_DONE    = "rd"
 
     def initialize
       super
@@ -15,8 +16,10 @@ module Scenes
     def ready
       add(@codes, "FS_C")
 
-      emit_signal({ type: ANALYZE_ALL })
-      emit_signal({ type: TRAMSFORM_ALL })
+      @codes.emit_signal({ type: ANALYZE_ALL })
+      @codes.emit_signal({ type: TRAMSFORM_ALL })
+
+      get_scene.emit_signal({ type: READY_DONE, id: id })
     end
   end
 end

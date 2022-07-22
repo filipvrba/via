@@ -1,7 +1,14 @@
+S_ERB = {
+  l: "<%",
+  r: "%>"
+}
 SPECIAL_SYMBOLS_ERB = {
   row: {
-    l: "<%",
-    r: "%>"
+    l: S_ERB[:l],
+    r: S_ERB[:r]
   },
-  return: "<%="
+  return: {
+    l: S_ERB[:l],
+    r: S_ERB[:r]
+  }
 }

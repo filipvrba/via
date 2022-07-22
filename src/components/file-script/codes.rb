@@ -18,16 +18,16 @@ module Components
     end
 
     def ready
-      get_scene.connect    Scenes::FileScript::ANALYZE_ALL,   @@analyze_all_listener
-      get_scene.connect    Scenes::FileScript::TRAMSFORM_ALL, @@transform_all_listener
+      connect(   Scenes::FileScript::ANALYZE_ALL,   @@analyze_all_listener  )
+      connect(   Scenes::FileScript::TRAMSFORM_ALL, @@transform_all_listener)
 
       add(@analyzer,       'FS_C_A')
       add(@transformation, 'FS_C_T')
     end
 
     def free
-      get_scene.disconnect Scenes::FileScript::ANALYZE_ALL,   @@analyze_all_listener
-      get_scene.disconnect Scenes::FileScript::TRAMSFORM_ALL, @@transform_all_listener
+      disconnect(Scenes::FileScript::ANALYZE_ALL,   @@analyze_all_listener  )
+      disconnect(Scenes::FileScript::TRAMSFORM_ALL, @@transform_all_listener)
       super
     end
   end

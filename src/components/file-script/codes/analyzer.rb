@@ -40,7 +40,7 @@ module Components
 
     def return_state(row, create_word)
       index_start = row.index /\=/
-      index_end   = row.index /\n/
+      index_end   = row.index(/\n/)
       row_scan    = row.scan(@return_regex).last
 
       if row_scan.include?('<')
