@@ -22,15 +22,18 @@ module Components
 
     def create_file data, relative_path
       if @parent.save_to_dir
-        relative_path = "#{@parent.save_to_dir}/#{relative_path}"
-        FileUtils.mkdir_p( File.dirname(relative_path) )
+        relative_path = File.join(@parent.save_to_dir, File.basename(relative_path))
+
+        unless Dir.exist? @parent.save_to_dir
+          FileUtils.mkdir_p File.dirname(relative_path)
+        end
       end
 
       file = File.new(relative_path, "w+")
       file.write data
       file.close
 
-      return File.basename(relative_path)
+      return relative_path
     end
   end
 end
