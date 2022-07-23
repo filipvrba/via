@@ -46,7 +46,7 @@ module Components
       if row_scan.include?('<')
 
         index_start = row.index(row_scan) + 1
-        index_end   = index_start + row_scan.length - 1
+        index_end   = index_start + row_scan.length - 2
       end
 
       parent.returns.append create_word.call(:return, index_start, index_end)
