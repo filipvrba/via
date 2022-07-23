@@ -6,7 +6,7 @@ module Data
       return find_all_files()
     else
       if File.directory? file
-        return find_all_files()
+        return find_all_files(file)
       else
         if !File.exist?(file)
           puts "A #{file} doest existing."
@@ -18,8 +18,8 @@ module Data
     end
   end
 
-  def self.find_all_files
-    Dir.glob("**/*.#{FILE_TYPES[:via]}")
+  def self.find_all_files(dir_path = "")
+    Dir.glob("#{dir_path}/**/*.#{FILE_TYPES[:via]}")
   end
 end
 

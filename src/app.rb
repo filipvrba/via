@@ -28,6 +28,10 @@ root.add(file_controller, "FC")
 
 Data::get_files.each do |file|
   file_controller.add_file_script file
+
+  if @options[:is_dev] == 2
+    puts file
+  end
 end
 
 root.free
