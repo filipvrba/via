@@ -20,16 +20,14 @@ module Components
       return data
     end
 
-    def create_file id
-      file_script   = @parent.find_children(id)
-      relative_path = get_relative_path(file_script)
+    def create_file data, relative_path
       if @parent.save_to_dir
         relative_path = "#{@parent.save_to_dir}/#{relative_path}"
         FileUtils.mkdir_p( File.dirname(relative_path) )
       end
 
       file = File.new(relative_path, "w+")
-      file.write file_script.data.join
+      file.write data
       file.close
 
       return File.basename(relative_path)

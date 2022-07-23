@@ -21,10 +21,16 @@ module Scenes
     end
 
     def script_ready_done(id)
-      get_scene(true).emit_signal({ type: START_CREATE_FILE })
+      file_script = find_children(id)
+      data = file_script.data.join
+      relative_path = @in_out.get_relative_path(file_script)
+
+      get_scene(true).emit_signal({ type: START_CREATE_FILE,
+                                    data: file_script.data,
+                                    name: File.basename(relative_path) })
 
       if @dev_mode <= 0
-        path = @in_out.create_file id
+        path = @in_out.create_file(data, relative_path)
         puts "This a file '#{path}' has been created."
       end
     end
@@ -45,14 +51,6 @@ module Scenes
 
     def get_file_scripts
       @children.select{ |child| child.id.is_a?(Integer) }
-    end
-
-    def get_data_files
-      data_files = Hash.new
-      get_file_scripts.each do |file_script|
-        data_files[file_script.name] = file_script.data
-      end
-      return data_files
     end
   end
 end

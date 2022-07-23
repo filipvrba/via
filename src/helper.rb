@@ -7,16 +7,15 @@ def p_header(name)
   puts "=" * identation + name + "=" * identation
 end
 
-def p_dev( data_files )
+def p_dev(data, name)
 
-  p_header("ERB")
-  data_files.reverse_each do |name, data|
+
+  p_header(FILE_TYPES[:erb].upcase)
     top_down = -> () {"+#{"-" * (name.length)}+"}
 
-    puts top_down.()
-    puts "|#{name}|"
-    puts top_down.()
-    puts data
-  end
-  p_header("===")
+  puts top_down.()
+  puts "|#{name}|"
+  puts top_down.()
+  puts data
+  puts
 end

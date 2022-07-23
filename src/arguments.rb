@@ -1,17 +1,25 @@
 module Data
-  def self.get_file
+  def self.get_files
     file = OptionParser.last_arg()
 
     unless file
-      exit()
+      return find_all_files()
     else
-      if !File.exist?(file)
-        puts "A #{file} doest existing, from this a \"#{Dir.pwd()}\" location."
-        return exit()
+      if File.directory? file
+        return find_all_files()
       else
-        return file
+        if !File.exist?(file)
+          puts "A #{file} doest existing."
+          return exit()
+        else
+          return [file]
+        end
       end
     end
+  end
+
+  def self.find_all_files
+    Dir.glob("**/*.#{FILE_TYPES[:via]}")
   end
 end
 

@@ -19,12 +19,15 @@ file_controller.dev_mode    = @options[:is_dev]
 root.connect(Scenes::FileController::START_CREATE_FILE, lambda do |signal|
 
     if file_controller.dev_mode >= 0 and file_controller.dev_mode < 2
-      p_dev(file_controller.get_data_files)
+      p_dev(signal[:data], signal[:name])
     end
   end
 )
 
 root.add(file_controller, "FC")
-file_controller.add_file_script Data::get_file
+
+Data::get_files.each do |file|
+  file_controller.add_file_script file
+end
 
 root.free
