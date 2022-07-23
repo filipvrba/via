@@ -33,7 +33,7 @@ module Components
       file.write data
       file.close
 
-      return relative_path
+      return relative_path.sub(Dir.pwd, '')
     end
   end
 end
