@@ -1,9 +1,7 @@
-require_relative "helper"
-require absolute_path("../../lib/index")
+require File.absolute_path("../../lib/index", __FILE__)
 require_relative "scenes/file_controller"
-require_relative "arguments"
 require_relative "constants"
-require_relative "signals"
+require_relative "modules/app/index"
 
 root = FV::Scene.new
 
@@ -35,3 +33,5 @@ Data::get_files.each do |file|
 end
 
 root.free
+
+# TODO: line breaking

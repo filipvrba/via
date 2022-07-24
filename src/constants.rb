@@ -16,3 +16,6 @@ FILE_TYPES = {
   via: "via",
   erb: "erb"
 }
+VERSIONS = [
+  "Version is 1.0b1 (2022-07-22)",
+]

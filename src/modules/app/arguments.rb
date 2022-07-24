@@ -37,7 +37,7 @@ OptionParser.parse do |parser|
       exit
   end
   parser.on( "-v", "--version", "Show version" ) do
-    puts "Version is 1.0b1 (2022-07-22)"
+    puts VERSIONS.last
     exit
   end
   parser.on( "-d ID", "--dev ID", "Enable an developing state." ) do |id|
