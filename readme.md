@@ -26,16 +26,18 @@ so no more repeating an special symbols.
 
 Can be seen from exemples, **via** adhere to ruby philosophy *"A programmer's best friend"*.
 
-## Program usage
-Program lze samostatně spustit pomocí bash scriptu.
+## Installation
+This a program has been very easy to install. Repository must be cloned to your directory
+and bash script under name *install.sh* is ready for start via a console.
+
+**Quick installation:**
 ```bash
-bin/run.sh
+git clone https://github.com/filipvrba/via.git &&
+cd via && bin/install.sh
 ```
 
 > ### Info
-> To vám umožňuje si vytvořit link do bin složky.
+> All an submodules be cloned to a repository and
+> create link for a bash script under name 'run.sh'.
 
-Pro příklad vytvoření linku:
-```bash
-
-```
+## Usage
