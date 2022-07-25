@@ -31,7 +31,7 @@ end
 }
 
 OptionParser.parse do |parser|
-  parser.banner( "Usage: via [options] [file]\n\nOptions:" )
+  parser.banner( "Usage: via [options] [file|dir]\n\nOptions:" )
   parser.on( "-h", "--help", "Show help" ) do
       puts parser
       exit
