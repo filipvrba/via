@@ -3,7 +3,7 @@ module Data
     file = OptionParser.last_arg()
 
     unless file
-      return find_all_files()
+      return find_all_files(Dir.pwd)
     else
       if File.directory? file
         return find_all_files(file)
