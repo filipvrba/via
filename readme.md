@@ -45,7 +45,7 @@ The application is standalone and edit a code is not required.
 A *'via'* is command in terminal with helping start program.
 This application search all files with a *'.via'* ending suffix,
 in an directory tree hierarchy. This all files transformate to an *erb* form
-and saved them with a *'.erb'* ending suffix to new file.
+and saved them with a *'.erb'* ending suffix to new files.
 
 **Start program:**
 ```bash
@@ -59,10 +59,53 @@ via
 > For a program manual ending recommended with key typing CTRL+C.
 
 ## 2.1 Parameters
-Via využívá parametry, které rozšiřují funkčnost aplikace.
+Via uses parameters that extend the functionality of the application.
 
-Jsou to:
-- **-d ID:** developerský mód, který lze 
-  - nill
+- **-d ID:** developer mode with an number identification.
+  - **0** - Transformed text prints to a terminal and create new a file (default).
+  - **1** - Transformed text prints to a terminal, by without a file create.
+  - **2** - Searches all files under suffix a *'.via'* and print found all files with relative path.
 
-- -s DIR:
+- **-s DIR:** a directory for save files.
+
+This pattern by apply for start a **via** program, so parameters by added to a center the command.
+
+```
+via [parameters] [file|dir]
+```
+
+## 2.2 Example
+Vytvořím si pracovní adresář a v něm další adresáře ze souborem.
+
+```
+.
+└── share
+    └── vias
+        └── index.html.via
+```
+
+Přidal jsem do složky *'vias'* soubor pod názvem *'index.html.via'*,
+který chci aby se transformoval do podoby **erb**. Nechci míchat soubory
+*'.erb'* s *'.via'*. Proto nově vytvořené soubory by se měli vytvořit do
+*'share'* adresáře. Pro lepší kontrolu chci vytisknout do terminálu
+transformovaný text.
+
+**Použiji tento příkaz:**
+
+```bash
+via -d -s share share/vias
+```
+
+**Return:**
+
+```
+==========ERB==========
++--------------+
+|index.html.erb|
++--------------+
+<%10.times do |number|%>
+  <p><%= number%></p>
+<%end%>
+
+This a file '/share/index.html.erb' has been created.
+```
