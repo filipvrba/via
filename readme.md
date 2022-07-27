@@ -75,7 +75,7 @@ via [parameters] [file|dir]
 ```
 
 ## 2.2 Example
-Vytvořím si pracovní adresář a v něm další adresáře ze souborem.
+Create a workspace directory and in inside create next directories with a file.
 
 ```
 .
@@ -83,6 +83,19 @@ Vytvořím si pracovní adresář a v něm další adresáře ze souborem.
     └── vias
         └── index.html.via
 ```
+
+```erb
+# index.html.via
+
+10.times do |number|
+  <p>= number</p>
+end
+```
+
+A file under name *'index.html.via'* added to a *'vias'* directory,
+
+Added to a *'vias'* directory was a new file named *'index.html.via'*,
+so file transformation to erb form.
 
 Přidal jsem do složky *'vias'* soubor pod názvem *'index.html.via'*,
 který chci aby se transformoval do podoby **erb**. Nechci míchat soubory

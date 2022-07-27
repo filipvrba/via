@@ -1,6 +1,7 @@
 #!/bin/bash
 
-git submodule update --init &&
+git submodule init &&
+git submodule update &&
 bin/linking.sh
 
 echo
