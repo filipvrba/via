@@ -6,21 +6,37 @@ def rails_templates_install
   else
 
     files = get_files(all_path)
+    template_exist_bitmask = 0
+    sum_bit = -> (index) { 2 ** (index + 1) }
 
     files.each_with_index do |f,i|
       template   = f[i][:template]
       rails      = f[i][:rails]
       i_row_end  = rails.index("end\n")
 
-      template_fix_tab = template.map { |r| " " * 2 + r }
-      templated_rails  = rails.insert(i_row_end, template_fix_tab)
+      template_fix_tab   = template.map { |r| " " * 2 + r }
+      is_template_exist  = rails.join.index(template_fix_tab.join)
 
-      if set_data_file(templated_rails, all_path.rails[i])
-        puts "This '#{all_path.files[i]}' by modified."
+      unless is_template_exist
+        templated_rails  = rails.insert(i_row_end, template_fix_tab)
+
+        if set_data_file(templated_rails, all_path.rails[i])
+          puts "This '#{all_path.files[i]}' by modified."
+        end
+      else
+        template_exist_bitmask |= sum_bit.call(i)
       end
     end
 
-    puts "Modified project, was successful."
+    template_exist_files = files.select.with_index do |f,i|
+      (template_exist_bitmask & sum_bit.call(i)) != 0
+    end
+    
+    unless template_exist_files.length == files.length
+      puts "Modified project, was successful."
+    else
+      puts "A via is installed in this a rails project."
+    end
   end
 end
 
