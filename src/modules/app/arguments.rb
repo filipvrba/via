@@ -28,6 +28,7 @@ end
   save: {
     dir: nil
   },
+  is_install: false,
 }
 
 OptionParser.parse do |parser|
@@ -39,6 +40,9 @@ OptionParser.parse do |parser|
   parser.on( "-v", "--version", "Show version" ) do
     puts VERSIONS.last
     exit
+  end
+  parser.on( "-i", "--install", "Installing the via to an rails project." ) do
+    @options[:is_install] = true
   end
   parser.on( "-d ID", "--dev ID", "Enable an developing state." ) do |id|
     is_int = id.to_i.to_s == id

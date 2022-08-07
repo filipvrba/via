@@ -10,6 +10,11 @@ sig_int do
   exit
 end
 
+if @options[:is_install]
+  rails_templates_install()
+  exit
+end
+
 file_controller = Scenes::FileController.new
 file_controller.save_to_dir = @options[:save][:dir]
 file_controller.dev_mode    = @options[:is_dev]
