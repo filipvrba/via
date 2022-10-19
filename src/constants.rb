@@ -18,5 +18,6 @@ FILE_TYPES = {
 }
 VERSIONS = [
   "Version is 1.0b1 (2022-07-22)",
+  "Version is 1.0b2 (2022-08-19)",
 ]
 TEMPLATE_PATH = "share/templates"

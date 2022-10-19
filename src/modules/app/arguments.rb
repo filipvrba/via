@@ -9,7 +9,7 @@ module Data
         return find_all_files(file)
       else
         if !File.exist?(file)
-          puts "A #{file} doest existing."
+          puts "Could not find the '#{file}'."
           return exit()
         else
           return [file]
