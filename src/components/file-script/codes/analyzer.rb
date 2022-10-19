@@ -48,10 +48,11 @@ module Components
         i_end   = nil
 
         unless row.index(S_ERB[:r], i_start)
-          i_end = row.index(/#{RETURN_COMMENT[:i_e][0]}|#{RETURN_COMMENT[:i_e][1]}/, i_start)
+          char_comment = row[is_exist_start + 1]
+          i_end = row.index(char_comment, i_start)
         end
           
-        parent.rows.append    create_word.call(:return, i_start, i_end)
+        parent.rows.append create_word.call(:return, i_start, i_end)
       end
     end
 

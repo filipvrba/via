@@ -4,7 +4,7 @@ end
 
 <h1>Your Pragmatic Catalog</h1>
 
-<ul class="= hello%> next">
+<ul class='= "/#{ Helper.transliterate(sign_in) }"'>
   @products.each do |product|
     <li>
       =image_tag(product.image_url)
