@@ -61,6 +61,8 @@ via
 ## 2.1 Parameters
 Via uses parameters that extend the functionality of the application.
 
+- **-i:** the Via implemented to an rails project
+
 - **-d ID:** developer mode with an number identification.
   - **0** - Transformed text prints to a terminal and create new a file (default).
   - **1** - Transformed text prints to a terminal, by without a file create.
