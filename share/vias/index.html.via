@@ -4,7 +4,7 @@ end
 
 <h1>Your Pragmatic Catalog</h1>
 
-<ul class="= hello">
+<ul class="= hello%> next">
   @products.each do |product|
     <li>
       =image_tag(product.image_url)

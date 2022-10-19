@@ -14,9 +14,14 @@ module Components
           SPECIAL_SYMBOLS_ERB[row.type][sym]).join
       end
 
-      data_row_erb.call(row.index_dim[0], :l)
-      data_row_erb.call(row.index_dim[1] +
-        SPECIAL_SYMBOLS_ERB[:row][:l].length, :r)
+      if row.index_dim[0]
+        data_row_erb.call(row.index_dim[0], :l)
+      end
+
+      if row.index_dim[1]
+        data_row_erb.call(row.index_dim[1] +
+          SPECIAL_SYMBOLS_ERB[:row][:l].length, :r)
+      end
 
       return data_row
     end

@@ -21,3 +21,13 @@ VERSIONS = [
   "Version is 1.0b2 (2022-08-19)",
 ]
 TEMPLATE_PATH = "share/templates"
+RETURN_COMMENT = {
+  i_s: [
+    '="=',
+    "='="
+  ],
+  i_e: [
+    '"',
+    "'"
+  ]
+}
